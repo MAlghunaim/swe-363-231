@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hire me</title>
+</head>
+<body>
+	<h1>Hire me!</h1>
+	<p>Please fill the following form with the necessary information:</p>
+	<form action="formSendSuccess.html" method="post">
+		<div>
+			<label for="emailField">Email: </label>
+			<input type="email" id="emailField" placeholder="example@email.com">
+		</div>
+		<div>
+			<input type="checkbox" id="checkbox_Track">
+			<label for="checkbox_urgent">Urgent?</label>
+		</div>
+		<div>
+			<input type="radio" id="smallBusiness" name="business size">
+			<label for="smallBusiness">Small business</label>
+			<input type="radio" id="largeBusiness" name="business size">
+			<label for="largeBusiness">Large business</label>
+		</div>
+		<div>
+			<label for="serviceText">
+				Select service:
+			</label>
+			<input type="text" list="items">
+		</div>
+		<div>
+			<datalist id="items">
+				<option value="Mobile"></option>
+				<option value="Web"></option>
+				<option value="UI design"></option>
+			</datalist>
+		</div>
+		<div>
+			<label for="datePicker">Enter date:</label>
+			<input type="date">
+		</div>
+		<div>
+			<input type="submit" value="Submit">
+		</div>
+		
+	</form>
+</body>
+</html>
