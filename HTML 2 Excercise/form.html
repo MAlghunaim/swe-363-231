@@ -6,17 +6,14 @@
 <body>
 	<header>
 		<h1>Hire me!</h1>
-		<nav>
-			<ul>
-				<li><a href="index.html">Main page</a></li>
-				<li><a href="contactsPage.html">Contact me</a></li>
-				<li><a href="details.html">Details</a></li>
-				<li><a href="promotionPage.html">The benefits of hiring me</a></li>
-			</ul>
-		</nav>
 	</header>
 	
-	<main><p>Please fill the following form with the necessary information:</p>
+	<main><article><p>Please fill the following form with the necessary information:</p></article>
+		<datalist id="items">
+			<option value="Mobile"></option>
+			<option value="Web"></option>
+			<option value="UI design"></option>
+		</datalist>
 	<form action="formSendSuccess.html" method="post">
 		<div>
 			<label for="emailField">Email: </label>
@@ -39,13 +36,6 @@
 			<input type="text" list="items">
 		</div>
 		<div>
-			<datalist id="items">
-				<option value="Mobile"></option>
-				<option value="Web"></option>
-				<option value="UI design"></option>
-			</datalist>
-		</div>
-		<div>
 			<label for="datePicker">Enter date:</label>
 			<input type="date">
 		</div>
@@ -56,7 +46,19 @@
 	</form>
 	</main>
 	<footer>
-		<p>@Copyright by me 2023. All rights reserved.</p>
+		<nav>
+			<ul>
+				<li><a href="index.html">Main page</a></li>
+				<li><a href="details.html">Details page</a></li>
+				<li><a href="promotionPage.html">Benefits of hiring me</a></li>
+				<li><a href="contactsPage.html">Contact me</a></li>
+			</ul>
+		</nav>
+		<p>@Copyright by me 2023. All rights reserved.<br>
+		<address>
+			<p>Email: <a href="mailto:s202016140@kfupm.edu.sa">s202016140@kfupm.edu.sa</a></p>
+		</address>
+		</p>
 	</footer>
 </body>
 </html>
