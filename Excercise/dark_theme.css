@@ -1,0 +1,45 @@
+body {
+	background-color: black;
+	color: white;
+}
+
+a {
+	color: #00aaff;
+	font-family: sans-serif;
+}
+a:hover {
+	color: wheat;
+}
+
+a:visited {
+	color: purple;
+}
+
+img {
+	display: block;	
+}
+
+form {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+table {
+	text-align: center;
+	font-family: 'Segoe UI';
+	
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: sans-serif;
+}
+article {
+	font-family: 'Lucida Sans';
+}
+
+nav {
+	display: inline;
+}
+
+footer {
+	font-family: Arial;
+}
