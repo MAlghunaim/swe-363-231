@@ -2,6 +2,49 @@ thead tr {
 	text-transform: uppercase;
 }
 
+::selection {
+	background-color: orange;
+
+}
+
+a:not(nav a) {
+	cursor: pointer;
+}
+
+thead:hover {
+	background-color: lightgreen;
+}
+
+h2 {
+	font-family: sans-serif;
+}
+
+h2 + p::first-letter {
+	font-size: x-large;
+	
+}
+
+
+tbody tr:nth-child(odd):hover {
+	background-color: coral;
+}
+
+tbody tr:nth-child(even):hover {
+	background-color: lightgreen;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-transform: capitalize;
+}
+
+nav ul li {
+	display: inline;
+}
+
+nav ul li:first-child a {
+	text-decoration: underline;
+}
+
 a {
 	color: green;
 }
@@ -17,4 +60,16 @@ em {
 #the_most_important {
 	text-transform: uppercase;
 	background-color: gold;
+}
+
+input {
+	height: 20px;
+}
+
+input[type="text"] {
+	border-color: lightgray;
+}
+
+input[name="message"] {
+	height: 50px;
 }
