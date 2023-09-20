@@ -1,0 +1,25 @@
+h1, h2, h3, h4, h5, h6 {
+	text-transform: uppercase;
+}
+
+h2 {
+	font-family: sans-serif;
+}
+
+
+a {
+	color: green;
+}
+
+.top {
+	background-color: red;
+}
+
+em {
+	background-color: blue;
+}
+
+#the_most_important {
+	text-transform: uppercase;
+	background-color: gold;
+}
