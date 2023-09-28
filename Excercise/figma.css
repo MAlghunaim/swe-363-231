@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+/*
+Design from https://www.figma.com/community/file/1009078914783822877/zeppelins-blog-website-design
+*/
+
+h1 {
+	font-family: Montserrat;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+	color: #D05270;
+	word-wrap: break-word;
+}
+
+table {
+	font-family: Montserrat;
+}
+
+h3 {
+
+}
+
+#firstP {
+	color: #424242;
+	font-family: Montserrat;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 120%;
+}
+
+p {
+	color: #424242;
+	font-family: Montserrat;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 120%;
+}
+
+
+h2 {
+	color: #424242;
+	font-family: Montserrat;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
+nav li {
+	display: flex;
+	margin-bottom: 38px;
+	color: #424242;
+	font-family: Montserrat;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	text-transform: uppercase;
+}
+
+li {
+	display: flex;
+	margin-bottom: 10px;
+	font-family: Montserrat;
+	color: #424242;
+}
+
+nav {
+	display: flex;
+}
+
+nav a {
+	text-decoration: none;
+	color: #424242;
+	font-family: Montserrat;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
+h4 {
+	color: #D05270;
+	font-family: Montserrat;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
+}
+
+a {
+	color: #D05270;
+	font-family: Montserrat;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
