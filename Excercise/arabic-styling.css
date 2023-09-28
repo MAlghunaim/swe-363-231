@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
 
 /*
 Design from https://www.figma.com/community/file/1009078914783822877/zeppelins-blog-website-design
 */
 
 h1 {
-	font-family: Montserrat;
+	font-family: Cairo;
 	font-size: 20px;
 	font-style: normal;
 	font-weight: 700;
@@ -15,12 +15,12 @@ h1 {
 }
 
 table {
-	font-family: Montserrat;
+	font-family: Cairo;
 }
 
 #firstP {
 	color: #424242;
-	font-family: Montserrat;
+	font-family: Cairo;
 	font-size: 12px;
 	font-style: normal;
 	font-weight: 400;
@@ -29,7 +29,7 @@ table {
 
 p {
 	color: #424242;
-	font-family: Montserrat;
+	font-family: Cairo;
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 400;
@@ -39,7 +39,7 @@ p {
 
 h2 {
 	color: #424242;
-	font-family: Montserrat;
+	font-family: Cairo;
 	font-size: 20px;
 	font-style: normal;
 	font-weight: 500;
@@ -50,7 +50,7 @@ nav li {
 	display: flex;
 	margin-bottom: 38px;
 	color: #424242;
-	font-family: Montserrat;
+	font-family: Cairo;
 	font-size: 20px;
 	font-style: normal;
 	font-weight: 500;
@@ -61,7 +61,7 @@ nav li {
 li {
 	display: flex;
 	margin-bottom: 10px;
-	font-family: Montserrat;
+	font-family: Cairo;
 	color: #424242;
 }
 
@@ -72,7 +72,7 @@ nav {
 nav a {
 	text-decoration: none;
 	color: #424242;
-	font-family: Montserrat;
+	font-family: Cairo;
 	font-size: 20px;
 	font-style: normal;
 	font-weight: 500;
@@ -81,7 +81,7 @@ nav a {
 
 h4 {
 	color: #D05270;
-	font-family: Montserrat;
+	font-family: Cairo;
 	font-size: 20px;
 	font-style: normal;
 	font-weight: 600;
@@ -90,7 +90,7 @@ h4 {
 
 a {
 	color: #D05270;
-	font-family: Montserrat;
+	font-family: Cairo;
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 500;
