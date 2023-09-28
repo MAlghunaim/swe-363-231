@@ -14,6 +14,16 @@ h1 {
 	word-wrap: break-word;
 }
 
+input {
+	background-color: white;
+	transition: background-color 1s;
+  }
+  
+input:hover {
+	background-color: orange;
+}
+
+
 table {
 	font-family: Montserrat;
 }
@@ -47,15 +57,16 @@ h2 {
 }
 
 nav li {
-	display: flex;
-	margin-bottom: 38px;
+	display:flex;
+	align-items: flex-end;
 	color: #424242;
 	font-family: Montserrat;
-	font-size: 20px;
+	font-size: 0px;
 	font-style: normal;
 	font-weight: 500;
 	line-height: normal;
 	text-transform: uppercase;
+	
 }
 
 li {
@@ -65,18 +76,68 @@ li {
 	color: #424242;
 }
 
+nav ul {
+	padding: 0px;
+	margin: 40px 0px 0px 40px;
+}
+
 nav {
-	display: flex;
+	display: contents;
+	flex-direction: column;
+	align-content: flex-end;
+	background-color: white;
+	width: 100%;
+	top: -1px;
+}
+
+#hamburger {
+	align-self: flex-end;
+	margin-right: 8%;
+}
+
+#hamburger:hover + * li:nth-child(1) a {
+	font-size: 20px;
+	margin-bottom: 38px;
+	transition-property: all;
+	transition-duration: 1s;
+	transition-delay: 1s;
+}
+
+#hamburger:hover + * li:nth-child(2) a {
+	font-size: 20px;
+	margin-bottom: 38px;
+	transition-property: all;
+	transition-duration: 1s;
+	transition-delay: 2s;
+}
+
+#hamburger:hover + * li:nth-child(3) a {
+	font-size: 20px;
+	margin-bottom: 38px;
+	transition-property: all;
+	transition-duration: 1s;
+	transition-delay: 3s;
+}
+
+#hamburger:hover + * li:nth-child(4) a {
+	font-size: 20px;
+	margin-bottom: 38px;
+	transition-property: all;
+	transition-duration: 1s;
+	transition-delay: 4s;
 }
 
 nav a {
 	text-decoration: none;
 	color: #424242;
 	font-family: Montserrat;
-	font-size: 20px;
+	font-size: 0px;
 	font-style: normal;
 	font-weight: 500;
 	line-height: normal;
+	transition: all 1s;
+	transition-delay: 4s;
+	margin-bottom: 0px;
 }
 
 h4 {
