@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #turn {
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .cell {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: larger;
+            font-weight: bolder;
+            background-color: #ffbf7b;
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            
+        }
+
+        .cell:hover{
+            background-color: blanchedalmond;
+        }
+
+        .row {
+            display: flex;
+        }
+        #inner{
+            width: 50px;
+            height: 50px;
+            background-color: #ff0000;;
+        }
+        button {
+            margin-top: 1em;
+            font-size:x-large;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bold;
+            background-color: chartreuse;
+            border-radius: 1em;
+            padding: 1em;
+        }
+        button:hover {
+            background-color: greenyellow;
+        }
+        aside {
+            display: flex;
+        }
+        table {
+            margin: 1em;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            background-color: orange;
+            text-align: center;
+            border-radius: 4px;
+            border: 2px solid;
+        }
+        table * {
+            border: 2px solid;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="turn">
+        Now it's <span>X</span>'s turn
+    </h1>
+    <!-- Board -->
+    <div class="board">
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+        <div class="row">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+    </div>
+    
+    <aside>
+        <button>Reset</button>
+        <table>
+            <thead>
+            <tr>
+                <th>X's score</th>
+                <th>O's score</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="scoreOfX">0</td>
+                    <td id="scoreOfO">0</td>
+                </tr>
+            </tbody>
+        </table>
+    </aside>
+    <script>
+
+        //variables
+        let turn = "X"
+        gameModel = ["","","","","","","","",""]
+        win = false
+        
+        // 8 different orientations to win the game
+        let winConditions = [false, false, false, false, false, false, false, false]
+
+        for(let i = 0; i < gameModel.length; i++){
+            document.querySelectorAll(".cell").item(i).tttid = i
+        }
+        
+        // when user clicks the cell show the letter (unless there is a letter)
+        const board = document.querySelector(".board")
+        board.addEventListener("click",cellClicked)
+        function cellClicked(event){
+            
+            // get the cell 
+            const cell = event.target
+            if (cell.innerHTML !== "" || win) {
+                return
+            }
+            // set the letter letter
+            cell.style["background-color"] = turn === "X" ? "#00ff00" : "#ff0000"
+            cell.innerHTML = turn
+            
+            gameModel[cell.tttid] = turn
+
+            // Check horizontal wins
+            for (let i = 0; i < 3; i++) {
+                if((gameModel[3*i] !== "") && (gameModel[3*i] === gameModel[3*i+1]) && (gameModel[3*i] === gameModel[3*i+2])) {
+                    win = true
+                    winConditions[i] = true
+                    break
+                }
+            }
+
+            // Check vertical wins
+            for (let i = 0; i < 3; i++) {
+                if((gameModel[i] !== "") && (gameModel[i] === gameModel[i+3]) && (gameModel[i] === gameModel[i+6])) {
+                    win = true
+                    winConditions[i+3] = true
+                    break
+                }
+            }
+
+            // check diagonal wins
+
+            if ((gameModel[0] !== "") && (gameModel[0] === gameModel[4]) && (gameModel[0] === gameModel[8])) {
+                win = true
+                winConditions[6] = true
+            }
+
+            if ((gameModel[2] !== "") && (gameModel[2] === gameModel[4]) && (gameModel[2] === gameModel[6])) {
+                win = true
+                winConditions[7] = true
+            }
+
+            // check win else switch turns switch turns or draw
+            //change title
+            if (win) {
+                let score = document.querySelector("#scoreOf"+turn).innerHTML
+                score = parseInt(score) + 1
+                document.querySelector("#scoreOf"+turn).innerHTML = score
+                document.getElementById("turn").innerHTML = turn+", you're winner!"
+                for (let i = 0; i < 3; i++) {
+                    if (winConditions[i]) {
+                        const strikethrough = document.createElement("div")
+                        strikethrough.style["width"] = "220px"
+                        strikethrough.style["height"] = "4px"
+                        strikethrough.style["background-color"] = "#0094ff"
+                        strikethrough.style["position"] = "absolute"
+                        document.querySelectorAll(".cell").item(3*i + 1).appendChild(strikethrough)
+                        break
+                    }
+                }
+
+                for (let i = 0; i < 3; i++) {
+                    if (winConditions[i+3]) {
+                        const strikethrough = document.createElement("div")
+                        strikethrough.style["width"] = "4px"
+                        strikethrough.style["height"] = "220px"
+                        strikethrough.style["background-color"] = "#0094ff"
+                        strikethrough.style["position"] = "absolute"
+                        document.querySelectorAll(".cell").item(i + 3).appendChild(strikethrough)
+                        break
+                    }
+                }
+
+                if(winConditions[6]) {
+                    const strikethrough = document.createElement("div")
+                    strikethrough.style["width"] = "4px"
+                    strikethrough.style["height"] = "311px"
+                    strikethrough.style["background-color"] = "#0094ff"
+                    strikethrough.style["position"] = "absolute"
+                    strikethrough.style["transform"] = "rotate(-45deg)"
+                    document.querySelectorAll(".cell").item(4).appendChild(strikethrough)
+                }
+
+                if(winConditions[7]) {
+                    const strikethrough = document.createElement("div")
+                    strikethrough.style["width"] = "4px"
+                    strikethrough.style["height"] = "311px"
+                    strikethrough.style["background-color"] = "#0094ff"
+                    strikethrough.style["position"] = "absolute"
+                    strikethrough.style["transform"] = "rotate(45deg)"
+                    document.querySelectorAll(".cell").item(4).appendChild(strikethrough)
+                }
+
+            }
+            else if (!gameModel.includes("")) {
+                document.getElementById("turn").innerHTML = "Draw"
+            }
+            else {
+                turn = turn === "X" ? "O" : "X"
+                document.querySelector("#turn span").innerHTML = turn
+            }
+            
+            
+
+        }
+        
+        document.querySelector("button").addEventListener("click", resetBoard)
+        function resetBoard(event) {
+            gameModel = ["", "", "", "", "", "", "", ""]
+            document.querySelectorAll(".cell").forEach(function clear(node) {
+                node.innerHTML = ""
+                node.style["background-color"] = ""
+            })
+            turn = "X"
+            const turnText = `Now it's <span>X</span>'s turn`
+            document.getElementById("turn").innerHTML = turnText
+            win = false
+            winConditions = [false, false, false, false, false, false, false, false]
+        }
+        // switch the letter 
+
+        // change the title to the turn 
+
+    </script>
+</body>
+</html>
