@@ -14,11 +14,15 @@ h1 {
 	word-wrap: break-word;
 }
 
+main {
+	margin-right: 20%;
+}
+
 input {
 	background-color: white;
 	transition: background-color 1s;
-  }
-  
+}
+
 input:hover {
 	background-color: orange;
 }
@@ -57,7 +61,7 @@ h2 {
 }
 
 nav li {
-	display:flex;
+	display: flex;
 	align-items: flex-end;
 	color: #424242;
 	font-family: Montserrat;
@@ -66,7 +70,7 @@ nav li {
 	font-weight: 500;
 	line-height: normal;
 	text-transform: uppercase;
-	
+
 }
 
 li {
@@ -95,7 +99,7 @@ nav {
 	margin-right: 8%;
 }
 
-#hamburger:hover + * li:nth-child(1) a {
+#hamburger:hover+* li:nth-child(1) a {
 	font-size: 20px;
 	margin-bottom: 38px;
 	transition-property: all;
@@ -103,7 +107,7 @@ nav {
 	transition-delay: 1s;
 }
 
-#hamburger:hover + * li:nth-child(2) a {
+#hamburger:hover+* li:nth-child(2) a {
 	font-size: 20px;
 	margin-bottom: 38px;
 	transition-property: all;
@@ -111,7 +115,7 @@ nav {
 	transition-delay: 2s;
 }
 
-#hamburger:hover + * li:nth-child(3) a {
+#hamburger:hover+* li:nth-child(3) a {
 	font-size: 20px;
 	margin-bottom: 38px;
 	transition-property: all;
@@ -119,7 +123,7 @@ nav {
 	transition-delay: 3s;
 }
 
-#hamburger:hover + * li:nth-child(4) a {
+#hamburger:hover+* li:nth-child(4) a {
 	font-size: 20px;
 	margin-bottom: 38px;
 	transition-property: all;
@@ -156,6 +160,40 @@ a {
 	font-style: normal;
 	font-weight: 500;
 	line-height: normal;
+}
+
+figure {
+	position: relative;
+}
+
+.watermark {
+	position: absolute;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0px;
+	bottom: 0px;
+	font-size: 50px;
+	color: gray;
+}
+
+.post {
+	position: relative;
+}
+.date {
+	position: absolute;
+	margin: 0px;
+	right: 10px;
+	top: 0px;
+	
+}
+
+aside {
+	position: fixed;
+	right: 5%;
+	bottom: 50%;
+}
+
+aside ul {
+	padding: 0px;
 }
 
 #loading {
@@ -197,15 +235,14 @@ a {
 	left: 1px;
 	top: 1px;
 	opacity: 100;
-	
 	transition: transform 1s 10s;
 	animation-name: fadeBackground;
 	animation-duration: 2s;
 	animation-iteration-count: 1;
 	animation-delay: 1s;
-	animation-timing-function:cubic-bezier(0.47, 0, 0.745, 0.715);
+	animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
 	animation-fill-mode: forwards;
-	
+	z-index: 1;
 }
 
 
