@@ -7,15 +7,23 @@
     <title>Document</title>
     <style>
         #turn {
-            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
         }
-        body{
+
+        h2 {
+            text-align: center;
+            font-size: medium;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        body {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
         }
+
         .cell {
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             font-size: larger;
@@ -23,42 +31,47 @@
             background-color: #ffbf7b;
             width: 100px;
             height: 100px;
-            border: 1px solid black;
+            border: 3px solid white;
             text-align: center;
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 10px;
-            
         }
 
-        .cell:hover{
+        .cell:hover {
             background-color: blanchedalmond;
         }
 
         .row {
             display: flex;
         }
-        #inner{
+
+        #inner {
             width: 50px;
             height: 50px;
-            background-color: #ff0000;;
+            background-color: #ff0000;
+            ;
         }
+
         button {
             margin-top: 1em;
-            font-size:x-large;
+            font-size: x-large;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             font-weight: bold;
             background-color: chartreuse;
             border-radius: 1em;
             padding: 1em;
         }
+
         button:hover {
             background-color: greenyellow;
         }
+
         aside {
             display: flex;
         }
+
         table {
             margin: 1em;
             font-family: Arial, Helvetica, sans-serif;
@@ -68,6 +81,7 @@
             border-radius: 4px;
             border: 2px solid;
         }
+
         table * {
             border: 2px solid;
         }
@@ -78,6 +92,11 @@
     <h1 id="turn">
         Now it's <span>X</span>'s turn
     </h1>
+    <h2>
+        ↑←↓→ to select the cell<br>
+        Spacebar or Enter to draw on the selected cell
+        <br>Press R key to reset board
+    </h2>
     <!-- Board -->
     <div class="board">
         <div class="row">
@@ -96,15 +115,15 @@
             <div class="cell"></div>
         </div>
     </div>
-    
+
     <aside>
         <button>Reset</button>
         <table>
             <thead>
-            <tr>
-                <th>X's score</th>
-                <th>O's score</th>
-            </tr>
+                <tr>
+                    <th>X's score</th>
+                    <th>O's score</th>
+                </tr>
             </thead>
             <tbody>
                 <tr>
@@ -118,35 +137,32 @@
 
         //variables
         let turn = "X"
-        gameModel = ["","","","","","","","",""]
+        gameModel = ["", "", "", "", "", "", "", "", ""]
+
+        let keyboardHighlight = 0
+
         win = false
-        
+
         // 8 different orientations to win the game
         let winConditions = [false, false, false, false, false, false, false, false]
 
-        for(let i = 0; i < gameModel.length; i++){
+        for (let i = 0; i < gameModel.length; i++) {
             document.querySelectorAll(".cell").item(i).tttid = i
         }
-        
+
         // when user clicks the cell show the letter (unless there is a letter)
         const board = document.querySelector(".board")
-        board.addEventListener("click",cellClicked)
-        function cellClicked(event){
-            
-            // get the cell 
-            const cell = event.target
-            if (cell.innerHTML !== "" || win) {
-                return
-            }
+        board.addEventListener("click", cellClicked)
+        function executeTurn(cell) {
             // set the letter letter
             cell.style["background-color"] = turn === "X" ? "#00ff00" : "#ff0000"
             cell.innerHTML = turn
-            
+
             gameModel[cell.tttid] = turn
 
             // Check horizontal wins
             for (let i = 0; i < 3; i++) {
-                if((gameModel[3*i] !== "") && (gameModel[3*i] === gameModel[3*i+1]) && (gameModel[3*i] === gameModel[3*i+2])) {
+                if ((gameModel[3 * i] !== "") && (gameModel[3 * i] === gameModel[3 * i + 1]) && (gameModel[3 * i] === gameModel[3 * i + 2])) {
                     win = true
                     winConditions[i] = true
                     break
@@ -155,9 +171,9 @@
 
             // Check vertical wins
             for (let i = 0; i < 3; i++) {
-                if((gameModel[i] !== "") && (gameModel[i] === gameModel[i+3]) && (gameModel[i] === gameModel[i+6])) {
+                if ((gameModel[i] !== "") && (gameModel[i] === gameModel[i + 3]) && (gameModel[i] === gameModel[i + 6])) {
                     win = true
-                    winConditions[i+3] = true
+                    winConditions[i + 3] = true
                     break
                 }
             }
@@ -177,10 +193,10 @@
             // check win else switch turns switch turns or draw
             //change title
             if (win) {
-                let score = document.querySelector("#scoreOf"+turn).innerHTML
+                let score = document.querySelector("#scoreOf" + turn).innerHTML
                 score = parseInt(score) + 1
-                document.querySelector("#scoreOf"+turn).innerHTML = score
-                document.getElementById("turn").innerHTML = turn+", you're winner!"
+                document.querySelector("#scoreOf" + turn).innerHTML = score
+                document.getElementById("turn").innerHTML = turn + ", you're winner!"
                 for (let i = 0; i < 3; i++) {
                     if (winConditions[i]) {
                         const strikethrough = document.createElement("div")
@@ -188,13 +204,13 @@
                         strikethrough.style["height"] = "4px"
                         strikethrough.style["background-color"] = "#0094ff"
                         strikethrough.style["position"] = "absolute"
-                        document.querySelectorAll(".cell").item(3*i + 1).appendChild(strikethrough)
+                        document.querySelectorAll(".cell").item(3 * i + 1).appendChild(strikethrough)
                         break
                     }
                 }
 
                 for (let i = 0; i < 3; i++) {
-                    if (winConditions[i+3]) {
+                    if (winConditions[i + 3]) {
                         const strikethrough = document.createElement("div")
                         strikethrough.style["width"] = "4px"
                         strikethrough.style["height"] = "220px"
@@ -205,7 +221,7 @@
                     }
                 }
 
-                if(winConditions[6]) {
+                if (winConditions[6]) {
                     const strikethrough = document.createElement("div")
                     strikethrough.style["width"] = "4px"
                     strikethrough.style["height"] = "311px"
@@ -215,7 +231,7 @@
                     document.querySelectorAll(".cell").item(4).appendChild(strikethrough)
                 }
 
-                if(winConditions[7]) {
+                if (winConditions[7]) {
                     const strikethrough = document.createElement("div")
                     strikethrough.style["width"] = "4px"
                     strikethrough.style["height"] = "311px"
@@ -233,28 +249,87 @@
                 turn = turn === "X" ? "O" : "X"
                 document.querySelector("#turn span").innerHTML = turn
             }
-            
-            
+
+
 
         }
-        
+
+        function cellClicked(event) {
+
+            // get the cell 
+            const cell = event.target
+            if (cell.innerHTML !== "" || win) {
+                return
+            }
+            executeTurn(cell)
+        }
+
         document.querySelector("button").addEventListener("click", resetBoard)
         function resetBoard(event) {
             gameModel = ["", "", "", "", "", "", "", ""]
+            keyboardHighlight = 0
             document.querySelectorAll(".cell").forEach(function clear(node) {
                 node.innerHTML = ""
                 node.style["background-color"] = ""
+                node.style["border-color"] = ""
             })
+            document.querySelectorAll(".cell")[0].style["border-color"] = "#a000ff"
             turn = "X"
             const turnText = `Now it's <span>X</span>'s turn`
             document.getElementById("turn").innerHTML = turnText
             win = false
             winConditions = [false, false, false, false, false, false, false, false]
         }
-        // switch the letter 
 
-        // change the title to the turn 
+        // Keyboard function
+        document.querySelector('.cell').style['border-color'] = "#a000ff"
+        window.addEventListener("keydown", keyboardInput, true)
+
+        function keyboardInput(event) {
+            event.preventDefault()
+            switch (event.key.toLowerCase()) {
+                case 'r': {
+                    resetBoard(event)
+                    break
+                }
+                case 'arrowup': {
+                    document.querySelectorAll('.cell')[keyboardHighlight].style['border-color'] = ''
+                    keyboardHighlight = (keyboardHighlight + 6) % 9
+                    document.querySelectorAll('.cell')[keyboardHighlight].style['border-color'] = "#a000ff"
+                    break
+                }
+                case 'arrowdown': {
+                    document.querySelectorAll('.cell')[keyboardHighlight].style['border-color'] = ''
+                    keyboardHighlight = (keyboardHighlight + 3) % 9
+                    document.querySelectorAll('.cell')[keyboardHighlight].style['border-color'] = "#a000ff"
+                    break
+                }
+                case 'arrowleft': {
+                    document.querySelectorAll('.cell')[keyboardHighlight].style['border-color'] = ''
+                    keyboardHighlight = (keyboardHighlight + 2) % 3 + 3*(Math.trunc(keyboardHighlight / 3))
+                    document.querySelectorAll('.cell')[keyboardHighlight].style['border-color'] = "#a000ff"
+                    break
+                }
+                case 'arrowright': {
+                    document.querySelectorAll('.cell')[keyboardHighlight].style['border-color'] = ''
+                    keyboardHighlight = (keyboardHighlight + 1) % 3 + 3*(Math.trunc(keyboardHighlight / 3))
+                    document.querySelectorAll('.cell')[keyboardHighlight].style['border-color'] = "#a000ff"
+                    break
+                }
+                case 'enter':
+                case ' ': {
+                    const cell = document.querySelectorAll('.cell')[keyboardHighlight]
+                        
+                    if (cell.innerHTML !== "" || win)
+                        return
+                    executeTurn(cell)
+                }
+
+            }
+
+        }
 
     </script>
 </body>
+
 </html>

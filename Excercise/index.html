@@ -56,7 +56,7 @@
 
 		</div>
 		<figure>
-			<table border="1">
+			<table>
 				<thead>
 					<tr>
 						<th>Hobby</td>
@@ -130,8 +130,7 @@
 				title: "Learning Javascript",
 				brief: `<p>In this week, I am learning javascript. I will use it to build functional websites.</p>`,
 				link: "details.html",
-			},
-			
+			},		
 		]
 
 		const section = document.getElementById("postSection")
@@ -141,7 +140,7 @@
 
 			postContainer.innerHTML = `
 	   			
-				<img src="${post.srcImg}" class="postImg" height="240" width="360">
+				<img src="${post.srcImg}" class="postImg" height="360" width="540">
 				<p class="date">${post.date}</p>
 				<h4>${post.title}</h4>
 				${post.brief}
