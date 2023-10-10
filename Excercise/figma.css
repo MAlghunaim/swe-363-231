@@ -4,6 +4,12 @@
 Design from https://www.figma.com/community/file/1009078914783822877/zeppelins-blog-website-design
 */
 
+
+body {
+	margin-top: 66px;
+	margin-left: 40px;
+}
+
 h1 {
 	font-family: Montserrat;
 	font-size: 20px;
@@ -30,6 +36,13 @@ input:hover {
 
 table {
 	font-family: Montserrat;
+	border: #D05270 solid;
+}
+
+table td {
+	border: #D05270 solid;
+	padding: 0px;
+	margin: 0px;
 }
 
 #firstP {
@@ -44,10 +57,10 @@ table {
 p {
 	color: #424242;
 	font-family: Montserrat;
-	font-size: 14px;
+	font-size: 16px;
 	font-style: normal;
 	font-weight: 400;
-	line-height: 120%;
+	line-height: normal;
 }
 
 
@@ -151,6 +164,11 @@ h4 {
 	font-style: normal;
 	font-weight: 600;
 	line-height: normal;
+	margin-top: 14px;
+	margin-bottom: 12px;
+}
+h4 + p {
+	height: 120px;
 }
 
 a {
@@ -160,6 +178,7 @@ a {
 	font-style: normal;
 	font-weight: 500;
 	line-height: normal;
+	word-wrap: break-word;
 }
 
 figure {
@@ -175,16 +194,37 @@ figure {
 	color: gray;
 }
 
+
 .post {
 	position: relative;
+	width: 540px;
+	margin: 20px;
 }
+
+
+#postSection {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
 .date {
-	position: absolute;
-	margin: 0px;
-	right: 10px;
-	top: 0px;
-	
+	color: #424242;
+	font-family: Montserrat;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: normal;
 }
+.articleDetails {
+	color: #D05270;
+	font-family: Montserrat;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
 
 aside {
 	position: fixed;
@@ -195,7 +235,7 @@ aside {
 aside ul {
 	padding: 0px;
 }
-
+/*
 #loading {
 	position: fixed;
 	display: flex;

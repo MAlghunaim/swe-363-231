@@ -12,21 +12,20 @@
 		content="web dev, web development, developer, full stack development, html5, html, hyperlink, kfupm">
 	<meta name="description"
 		content="a blog page about me. it's also a way for me to learn making webpages through HTML5.">
-
 </head>
 
 <body>
 	<header>
 		<div id="loadingBackground">
-		<div id="loading">
-			<div></div>
-			<div></div>
-			<div></div>
-		</div>
+			<div id="loading">
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
 		</div>
 		<h1>Mohammed: front-end developer</h1>
 		<nav>
-				<img id="hamburger" src="assets/triple bars.svg" alt="" width="50">
+			<img id="hamburger" src="assets/triple bars.svg" alt="" width="50">
 			<ul>
 				<li><a href="details.html">Click here for details</a></li>
 				<li><a href="form.html">Click here if you want to hire me</a></li>
@@ -34,31 +33,27 @@
 				<li><a href="index-ar.html">الصفحة بالعربية</a></li>
 			</ul>
 		</nav>
-		
+
 		<input type="button" value="Button">
 		<h2>A blog webpage.</h2>
-		
+
 
 	</header>
 	<main>
 
 		<article>
 			<h1>What is this and who am I?</h1>
-			<p id="firstP">This is a blog website. I am a Computer Science Junior student at KFUPM studying web development.</p>
+			<p id="firstP">This is a blog website. I am a Computer Science Junior student at KFUPM studying web
+				development.</p>
 		</article>
 		<figure>
 			<img src="assets/dev.png" title="An example of an image title." alt="An image of a developer." width="360">
 			<p class="watermark">MA</p>
-			
+
 		</figure>
-		<div class="posts">
 		<h1>Latest Info</h1>
-		<div class="post">
-		<h4>Improving my skill in CSS</h4>
-		<p class="date">27/9/2023</p>
-		<p>I am studying CSS in order to aid my ability in web development. Soon, I will apply animations in my webpage. The current page's design is from figma: <a href="https://www.figma.com/community/file/1009078914783822877/zeppelins-blog-website-design">https://www.figma.com/community/file/1009078914783822877/zeppelins-blog-website-design</a></p>
-		<a href="details.html">Details</a>
-		</div>
+		<div id="postSection">
+
 		</div>
 		<figure>
 			<table border="1">
@@ -117,6 +112,47 @@
 		</address>
 		</p>
 	</footer>
+	<script>
+		const postsData = [
+			{
+				srcImg: "assets/css post.png",
+				date: (new Date("2023-09-27:00:00.000Z")).toDateString(), // YYYY-MM-DDTHH:mm:ss.sssZ is the ISO 8601 format
+				title: "Improving my skill in CSS",
+				brief: `<p>I am studying CSS in order to aid my ability in web development. Soon, I will apply animations in my
+					webpage. The current page's design is from figma: <a
+						href="https://www.figma.com/community/file/1009078914783822877/zeppelins-blog-website-design">https://www.figma.com/community/file/1009078914783822877/zeppelins-blog-website-design</a>
+				</p>`,
+				link: "details.html",
+			},
+			{
+				srcImg: "assets/js.jpg",
+				date: (new Date("2023-10-04:00:00.000Z")).toDateString(), // YYYY-MM-DDTHH:mm:ss.sssZ is the ISO 8601 format
+				title: "Learning Javascript",
+				brief: `<p>In this week, I am learning javascript. I will use it to build functional websites.</p>`,
+				link: "details.html",
+			},
+			
+		]
+
+		const section = document.getElementById("postSection")
+		for (const post of postsData) {
+			const postContainer = document.createElement('div')
+			postContainer.setAttribute('class', 'post')
+
+			postContainer.innerHTML = `
+	   			
+				<img src="${post.srcImg}" class="postImg" height="240" width="360">
+				<p class="date">${post.date}</p>
+				<h4>${post.title}</h4>
+				${post.brief}
+				<a href="${post.link}" class="articleDetails">DETAILS</a>
+				`
+
+			section.append(postContainer)
+		}
+
+
+	</script>
 </body>
 
 </html>
