@@ -88,6 +88,9 @@
 				<caption align="bottom">Table of my hobbies and their ranks</caption>
 			</table>
 		</figure>
+		<article>
+			<p>A random yes or no from an API, the API says: <span id='answer'></span></p>
+		</article>
 	</main>
 	<aside>
 		<h1>Explore further:</h1>
@@ -113,6 +116,15 @@
 		</p>
 	</footer>
 	<script>
+		const yesOrNoElement = document.getElementById('answer')
+		async function fetchYesOrNo() {
+			const response = await fetch('https://yesno.wtf/api')
+			const data = await response.json()
+			yesOrNoElement.innerHTML = data.answer
+		}
+
+		fetchYesOrNo()
+		
 		const postsData = [
 			{
 				srcImg: "assets/css post.png",
@@ -130,7 +142,7 @@
 				title: "Learning Javascript",
 				brief: `<p>In this week, I am learning javascript. I will use it to build functional websites.</p>`,
 				link: "details.html",
-			},		
+			},
 		]
 
 		const section = document.getElementById("postSection")
