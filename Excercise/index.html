@@ -23,6 +23,9 @@
 				<div></div>
 			</div>
 		</div>
+		<div id="screensaver">
+
+		</div>
 		<h1>Mohammed: front-end developer</h1>
 		<nav>
 			<img id="hamburger" src="assets/triple bars.svg" alt="" width="50">
@@ -115,55 +118,7 @@
 		</address>
 		</p>
 	</footer>
-	<script>
-		const yesOrNoElement = document.getElementById('answer')
-		async function fetchYesOrNo() {
-			const response = await fetch('https://yesno.wtf/api')
-			const data = await response.json()
-			yesOrNoElement.innerHTML = data.answer
-		}
-
-		fetchYesOrNo()
-		
-		const postsData = [
-			{
-				srcImg: "assets/css post.png",
-				date: (new Date("2023-09-27:00:00.000Z")).toDateString(), // YYYY-MM-DDTHH:mm:ss.sssZ is the ISO 8601 format
-				title: "Improving my skill in CSS",
-				brief: `<p>I am studying CSS in order to aid my ability in web development. Soon, I will apply animations in my
-					webpage. The current page's design is from figma: <a
-						href="https://www.figma.com/community/file/1009078914783822877/zeppelins-blog-website-design">https://www.figma.com/community/file/1009078914783822877/zeppelins-blog-website-design</a>
-				</p>`,
-				link: "details.html",
-			},
-			{
-				srcImg: "assets/js.jpg",
-				date: (new Date("2023-10-04:00:00.000Z")).toDateString(), // YYYY-MM-DDTHH:mm:ss.sssZ is the ISO 8601 format
-				title: "Learning Javascript",
-				brief: `<p>In this week, I am learning javascript. I will use it to build functional websites.</p>`,
-				link: "details.html",
-			},
-		]
-
-		const section = document.getElementById("postSection")
-		for (const post of postsData) {
-			const postContainer = document.createElement('div')
-			postContainer.setAttribute('class', 'post')
-
-			postContainer.innerHTML = `
-	   			
-				<img src="${post.srcImg}" class="postImg" height="360" width="540">
-				<p class="date">${post.date}</p>
-				<h4>${post.title}</h4>
-				${post.brief}
-				<a href="${post.link}" class="articleDetails">DETAILS</a>
-				`
-
-			section.append(postContainer)
-		}
-
-
-	</script>
+	<script src="indexScript.js" type="module"></script>
 </body>
 
 </html>

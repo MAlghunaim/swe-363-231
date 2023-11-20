@@ -235,6 +235,15 @@ aside {
 aside ul {
 	padding: 0px;
 }
+
+#screensaver {
+	display: none;
+	position: fixed;
+	left: 1px;
+	top: 1px;
+	z-index: 1;
+}
+
 /*
 #loading {
 	position: fixed;
@@ -297,3 +306,5 @@ aside ul {
 		transform: translateY(-100%);
 	}
 }
+
+*/

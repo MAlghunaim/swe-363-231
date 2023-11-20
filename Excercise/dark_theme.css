@@ -43,3 +43,10 @@ nav {
 footer {
 	font-family: Arial;
 }
+
+canvas {
+	background-color: white;
+	display: block;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}

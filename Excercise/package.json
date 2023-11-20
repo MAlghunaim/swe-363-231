@@ -1,0 +1,18 @@
+{
+  "name": "excercise",
+  "version": "1.0.0",
+  "description": "Project folder for SWE363 excercises",
+  "type": "module",
+  "main": "indexScript.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mohammed Alghunaim",
+  "license": "ISC",
+  "dependencies": {
+    "three": "^0.158.0"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
