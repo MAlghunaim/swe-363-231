@@ -41,8 +41,14 @@
 			<input type="date">
 		</div>
 		<div>
+			<label for="signature"><br>Write your signature:</label>
+			<canvas id="signature"></canvas>
+		</div>
+		<div>
+			<input id='canvasData' type="hidden">
 			<input type="submit" value="Submit">
 		</div>
+		
 		
 	</form>
 	</main>
@@ -62,4 +68,45 @@
 		</p>
 	</footer>
 </body>
+<script>
+	const cnvs = document.getElementById("signature")
+	const ctx = cnvs.getContext('2d')
+	cnvs.addEventListener("mousedown", reposition)
+	cnvs.addEventListener("mousemove", drawLine)
+	cnvs.addEventListener("mouseenter", e => {
+		reposition(e)
+		ctx.stroke()
+
+	})
+	cnvs.addEventListener('mouseup', includeSignature)
+
+	const rect = cnvs.getBoundingClientRect()
+	let x = 0
+	let y = 0
+
+	function reposition(e) {
+		x = e.clientX - rect.left
+		y = e.clientY - rect.top
+	}
+
+	function drawLine(e) {
+		if(e.buttons !== 1) return
+		ctx.beginPath()
+		ctx.strokeStyle = '#000000'
+		ctx.lineWidth = 4
+		ctx.moveTo(x, y)
+		reposition(e)
+		ctx.lineTo(x, y)
+		
+		ctx.stroke()
+	}
+
+	function includeSignature() {
+		const cnvsData = cnvs.toDataURL('image/png')
+		document.getElementById('canvasData').value = cnvsData
+	}
+
+
+	
+</script>
 </html>
