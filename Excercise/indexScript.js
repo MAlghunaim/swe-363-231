@@ -92,6 +92,13 @@ async function fetchYesOrNo() {
 
 fetchYesOrNo()
 
+var mappingArray = new Array(9)
+for(let i = 0; i < 9; i++) {
+	mappingArray[i] = i-1
+}
+console.log(mappingArray.toString())
+var mappedArray = mappingArray.map((i) => i+1)
+console.log(mappedArray.toString())
 
 class Post {
 	constructor(srcImg, date, title, brief, link) {

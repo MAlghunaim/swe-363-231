@@ -136,15 +136,13 @@
     <script>
 
         //variables
-        let turn = "X"
-        gameModel = ["", "", "", "", "", "", "", "", ""]
-
-        let keyboardHighlight = 0
-
-        win = false
+        var turn = "X"
+        var gameModel = ["", "", "", "", "", "", "", "", ""]
+        var keyboardHighlight = 0
+        var win = false
 
         // 8 different orientations to win the game
-        let winConditions = [false, false, false, false, false, false, false, false]
+        var winConditions = [false, false, false, false, false, false, false, false]
 
         for (let i = 0; i < gameModel.length; i++) {
             document.querySelectorAll(".cell").item(i).tttid = i
@@ -190,66 +188,68 @@
                 winConditions[7] = true
             }
 
-            // check win else switch turns switch turns or draw
-            //change title
-            if (win) {
-                let score = document.querySelector("#scoreOf" + turn).innerHTML
-                score = parseInt(score) + 1
-                document.querySelector("#scoreOf" + turn).innerHTML = score
-                document.getElementById("turn").innerHTML = turn + ", you're winner!"
-                for (let i = 0; i < 3; i++) {
-                    if (winConditions[i]) {
-                        const strikethrough = document.createElement("div")
-                        strikethrough.style["width"] = "220px"
-                        strikethrough.style["height"] = "4px"
-                        strikethrough.style["background-color"] = "#0094ff"
-                        strikethrough.style["position"] = "absolute"
-                        document.querySelectorAll(".cell").item(3 * i + 1).appendChild(strikethrough)
-                        break
-                    }
-                }
+            checkAndExecuteWin(win)
 
-                for (let i = 0; i < 3; i++) {
-                    if (winConditions[i + 3]) {
+
+            function checkAndExecuteWin(win) {
+                // check win else switch turns or draw
+                //change title
+                if (win) {
+                    let score = document.querySelector("#scoreOf" + turn).innerHTML
+                    score = parseInt(score) + 1
+                    document.querySelector("#scoreOf" + turn).innerHTML = score
+                    document.getElementById("turn").innerHTML = turn + ", you're winner!"
+                    for (let i = 0; i < 3; i++) {
+                        if (winConditions[i]) {
+                            const strikethrough = document.createElement("div")
+                            strikethrough.style["width"] = "220px"
+                            strikethrough.style["height"] = "4px"
+                            strikethrough.style["background-color"] = "#0094ff"
+                            strikethrough.style["position"] = "absolute"
+                            document.querySelectorAll(".cell").item(3 * i + 1).appendChild(strikethrough)
+                            break
+                        }
+                    }
+
+                    for (let i = 0; i < 3; i++) {
+                        if (winConditions[i + 3]) {
+                            const strikethrough = document.createElement("div")
+                            strikethrough.style["width"] = "4px"
+                            strikethrough.style["height"] = "220px"
+                            strikethrough.style["background-color"] = "#0094ff"
+                            strikethrough.style["position"] = "absolute"
+                            document.querySelectorAll(".cell").item(i + 3).appendChild(strikethrough)
+                            break
+                        }
+                    }
+
+                    const createDiagonalStrikethrough = (sign) => {
                         const strikethrough = document.createElement("div")
                         strikethrough.style["width"] = "4px"
-                        strikethrough.style["height"] = "220px"
+                        strikethrough.style["height"] = "311px"
                         strikethrough.style["background-color"] = "#0094ff"
                         strikethrough.style["position"] = "absolute"
-                        document.querySelectorAll(".cell").item(i + 3).appendChild(strikethrough)
-                        break
+                        strikethrough.style["transform"] = `rotate(${sign}45deg)`
+                        document.querySelectorAll(".cell").item(4).appendChild(strikethrough)
                     }
-                }
+                    if (winConditions[6]) {
+                        createDiagonalStrikethrough('-')
+                    }
 
-                if (winConditions[6]) {
-                    const strikethrough = document.createElement("div")
-                    strikethrough.style["width"] = "4px"
-                    strikethrough.style["height"] = "311px"
-                    strikethrough.style["background-color"] = "#0094ff"
-                    strikethrough.style["position"] = "absolute"
-                    strikethrough.style["transform"] = "rotate(-45deg)"
-                    document.querySelectorAll(".cell").item(4).appendChild(strikethrough)
-                }
+                    if (winConditions[7]) {
+                        createDiagonalStrikethrough('')
+                    }
 
-                if (winConditions[7]) {
-                    const strikethrough = document.createElement("div")
-                    strikethrough.style["width"] = "4px"
-                    strikethrough.style["height"] = "311px"
-                    strikethrough.style["background-color"] = "#0094ff"
-                    strikethrough.style["position"] = "absolute"
-                    strikethrough.style["transform"] = "rotate(45deg)"
-                    document.querySelectorAll(".cell").item(4).appendChild(strikethrough)
+                }
+                else if (gameModel.filter(squares => squares === '').length == 0) {
+                    document.getElementById("turn").innerHTML = "Draw"
+                }
+                else {
+                    turn = turn === "X" ? "O" : "X"
+                    document.querySelector("#turn span").innerHTML = turn
                 }
 
             }
-            else if (!gameModel.includes("")) {
-                document.getElementById("turn").innerHTML = "Draw"
-            }
-            else {
-                turn = turn === "X" ? "O" : "X"
-                document.querySelector("#turn span").innerHTML = turn
-            }
-
 
 
         }
@@ -306,20 +306,20 @@
                 }
                 case 'arrowleft': {
                     document.querySelectorAll('.cell')[keyboardHighlight].style['border-color'] = ''
-                    keyboardHighlight = (keyboardHighlight + 2) % 3 + 3*(Math.trunc(keyboardHighlight / 3))
+                    keyboardHighlight = (keyboardHighlight + 2) % 3 + 3 * (Math.trunc(keyboardHighlight / 3))
                     document.querySelectorAll('.cell')[keyboardHighlight].style['border-color'] = "#a000ff"
                     break
                 }
                 case 'arrowright': {
                     document.querySelectorAll('.cell')[keyboardHighlight].style['border-color'] = ''
-                    keyboardHighlight = (keyboardHighlight + 1) % 3 + 3*(Math.trunc(keyboardHighlight / 3))
+                    keyboardHighlight = (keyboardHighlight + 1) % 3 + 3 * (Math.trunc(keyboardHighlight / 3))
                     document.querySelectorAll('.cell')[keyboardHighlight].style['border-color'] = "#a000ff"
                     break
                 }
                 case 'enter':
                 case ' ': {
                     const cell = document.querySelectorAll('.cell')[keyboardHighlight]
-                        
+
                     if (cell.innerHTML !== "" || win)
                         return
                     executeTurn(cell)
