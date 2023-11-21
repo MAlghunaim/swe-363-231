@@ -11,6 +11,10 @@ const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } )
 const cube = new THREE.Mesh(geometry, material)
 scene.add(cube)
 
+const cosineFunction = function(a, theta, alpha) {
+	return a*Math.cos(alpha*theta*Math.PI)
+}
+
 class CosCurve extends THREE.Curve {
 
 	constructor(scale = 1) {
@@ -20,7 +24,7 @@ class CosCurve extends THREE.Curve {
 
 	getPoint(t, optionalTarget = new THREE.Vector3()) {
 		const tx = t
-		const ty = 0.15*Math.cos(4*Math.PI * t)
+		const ty = cosineFunction(0.15, t, 4)
 		const tz = 0
 		return optionalTarget.set(tx, ty, tz).multiplyScalar(this.scale)
 	}
@@ -44,7 +48,7 @@ scene.add(mesh3)
 
 camera.position.z = 50
 
-function animate() {
+const animate = () => {
 	requestAnimationFrame(animate)
 	cube.rotation.x += 0.01
 	cube.rotation.y += 0.01
@@ -71,9 +75,12 @@ function showScreensaver() {
 }
 
 function hideScreensaver() {
-	screensaverDiv.style.display = 'none'
-	clearTimeout(timer)
-	timer = setTimeout(showScreensaver, 60000)
+	screensaverDiv.style.display = 'none';
+	// reset timer
+	(() => {
+		clearTimeout(timer)
+		timer = setTimeout(showScreensaver, 60000)
+	})()
 }
 
 const yesOrNoElement = document.getElementById('answer')
@@ -106,27 +113,6 @@ webpage. The current page's design is from figma: <a
 postsArray[1] = new Post("assets/js.jpg", (new Date("2023-10-04:00:00.000Z")).toDateString(), "Learning Javascript", `<p>In this week, I am learning javascript. I will use it to build functional websites.</p>`, "details.html")
 postsArray[2] = new Post('assets/js.jpg', (new Date('2023-11-21:00:00.000Z')).toDateString(), 'Creating classes in JS', `<p>This post section used to be stored in JSON format, now it's an array of Post objects.</p>`, 'details.html')
 
-/*
-const postsData = [
-	{
-		srcImg: "assets/css post.png",
-		date: (new Date("2023-09-27:00:00.000Z")).toDateString(), // YYYY-MM-DDTHH:mm:ss.sssZ is the ISO 8601 format
-		title: "Improving my skill in CSS",
-		brief: `<p>I am studying CSS in order to aid my ability in web development. Soon, I will apply animations in my
-			webpage. The current page's design is from figma: <a
-				href="https://www.figma.com/community/file/1009078914783822877/zeppelins-blog-website-design">https://www.figma.com/community/file/1009078914783822877/zeppelins-blog-website-design</a>
-		</p>`,
-		link: "details.html",
-	},
-	{
-		srcImg: "assets/js.jpg",
-		date: (new Date("2023-10-04:00:00.000Z")).toDateString(), // YYYY-MM-DDTHH:mm:ss.sssZ is the ISO 8601 format
-		title: "Learning Javascript",
-		brief: `<p>In this week, I am learning javascript. I will use it to build functional websites.</p>`,
-		link: "details.html",
-	},
-]
-*/
 const section = document.getElementById("postSection")
 for (const post of postsArray) {
 	const postContainer = document.createElement('div')
