@@ -85,6 +85,28 @@ async function fetchYesOrNo() {
 
 fetchYesOrNo()
 
+
+class Post {
+	constructor(srcImg, date, title, brief, link) {
+		this.srcImg = srcImg
+		this.date = date
+		this.title = title
+		this.brief = brief
+		this.link = link
+	}
+}
+
+const postsArray = new Array(3)
+
+postsArray[0] = new Post("assets/css post.png", (new Date("2023-09-27:00:00.000Z")).toDateString(), "Improving my skill in CSS", `<p>I am studying CSS in order to aid my ability in web development. Soon, I will apply animations in my
+webpage. The current page's design is from figma: <a
+	href="https://www.figma.com/community/file/1009078914783822877/zeppelins-blog-website-design">https://www.figma.com/community/file/1009078914783822877/zeppelins-blog-website-design</a>
+</p>`, "details.html")
+
+postsArray[1] = new Post("assets/js.jpg", (new Date("2023-10-04:00:00.000Z")).toDateString(), "Learning Javascript", `<p>In this week, I am learning javascript. I will use it to build functional websites.</p>`, "details.html")
+postsArray[2] = new Post('assets/js.jpg', (new Date('2023-11-21:00:00.000Z')).toDateString(), 'Creating classes in JS', `<p>This post section used to be stored in JSON format, now it's an array of Post objects.</p>`, 'details.html')
+
+/*
 const postsData = [
 	{
 		srcImg: "assets/css post.png",
@@ -104,9 +126,9 @@ const postsData = [
 		link: "details.html",
 	},
 ]
-
+*/
 const section = document.getElementById("postSection")
-for (const post of postsData) {
+for (const post of postsArray) {
 	const postContainer = document.createElement('div')
 	postContainer.setAttribute('class', 'post')
 
