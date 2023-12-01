@@ -10,9 +10,12 @@
   "author": "Mohammed Alghunaim",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.23.4",
+    "@babel/core": "^7.23.5",
     "three": "^0.158.0"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.23.3",
     "vite": "^5.0.0"
   }
 }
